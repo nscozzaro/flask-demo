@@ -4,11 +4,18 @@ app = Flask(__name__)
 
 @app.route('/')
 def main():
-  return redirect('/index')
+    return redirect('/index')
 
 @app.route('/index')
 def index():
-  return render_template('index.html')
+    return render_template('index.html')
+
+@app.route('/graph', methods=["GET", "POST"])
+def graph():
+    if request.method == 'POST':
+        data = request.form
+        return render_template('graph.html', data = data)
+
 
 if __name__ == '__main__':
   app.run(port=33507)
