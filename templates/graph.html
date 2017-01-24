@@ -1,15 +1,16 @@
-<!doctype html>
-<html lang="en">
-
-	<body>
-		<div class=page>
-  			<h1>User Input</h1>
-  			<div class=metanav>
-
-    			<h4>{{ data }}</h4>
-                <h4>{{ response }}</h4>
-
-  			</div>
-		</div>
-	</body>
+<html>
+<head>
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.css" rel="stylesheet" type="text/css">
+    <link href="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.4.min.css" rel="stylesheet" type="text/css">
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-0.12.4.min.js"></script>
+    <script src="http://cdn.pydata.org/bokeh/release/bokeh-widgets-0.12.4.min.js"></script>
+    {{ script | safe }}
+</head>
+<body>
+<div class=page>
+    <h1>Header text</h1>
+    {{ div | safe }}
+</div>
+    {{ test | safe }}
+</body>
 </html>
