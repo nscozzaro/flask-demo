@@ -35,9 +35,11 @@ def graph():
 
         # Send the data to the Bokeh plot
         p = figure(x_axis_type="datetime", width=800, height=600)
-        p.line(data['Date'], data['Close'])
+        line_color=['red', 'green', 'blue', 'brown']
+        for index, feature in enumerate(features):
+            p.line(data['Date'], data[feature], legend=feature, line_color = line_color[index])
         script, div = components(p)
-        return render_template('graph.html', script=script, div=div)
+        return render_template('graph.html', script=script, div=div, company = ticker.upper())
 
 
 if __name__ == '__main__':
