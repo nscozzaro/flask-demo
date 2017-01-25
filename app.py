@@ -20,9 +20,13 @@ def index():
 def graph():
     form_dict = {}
     if request.method == 'POST':
-        # Extract form info
+        # Extract form info and handle errors
         ticker = request.form['ticker']
+        if not ticker:
+            return '<h1>Please go back and enter a stock ticker</h1>'
         features = request.form.getlist('features')
+        if not features:
+            return '<h1>Please go back and select some features to show</h1>'
 
         # Call the Quandl API
         api_url = 'https://www.quandl.com/api/v1/datasets/WIKI/%s.json?api_key=bhDkb5WTxo-gXcFN5mgq' % ticker
@@ -39,6 +43,7 @@ def graph():
         for index, feature in enumerate(features):
             p.line(data['Date'], data[feature], legend=feature, line_color = line_color[index])
         script, div = components(p)
+
         return render_template('graph.html', script=script, div=div, company = ticker.upper())
 
 
